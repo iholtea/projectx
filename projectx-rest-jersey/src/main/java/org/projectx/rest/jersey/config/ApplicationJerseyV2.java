@@ -6,7 +6,7 @@ import java.util.Set;
 import javax.ws.rs.ApplicationPath;
 import javax.ws.rs.core.Application;
 
-import org.projectx.rest.jersey.resource.HelloResourceB;
+import org.projectx.rest.jersey.resource.other.HelloResourceB;
 
 @ApplicationPath("webapiv2")
 public class ApplicationJerseyV2 extends Application {

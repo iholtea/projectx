@@ -6,10 +6,10 @@ import java.util.Set;
 import javax.ws.rs.ApplicationPath;
 import javax.ws.rs.core.Application;
 
-import org.projectx.rest.jersey.resource.HelloResourceA;
+import org.projectx.rest.jersey.resource.other.HelloResourceA;
 
 @ApplicationPath("webapiv1")
-public class ApplicationJersey extends Application {
+public class ApplicationJerseyV1 extends Application {
 	
 	@Override
     public Set<Class<?>> getClasses() {

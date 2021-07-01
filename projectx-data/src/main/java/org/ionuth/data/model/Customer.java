@@ -1,21 +1,32 @@
 package org.ionuth.data.model;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
+
+@XmlRootElement
 public class Customer {
 	
-	private int customerId;
+	private long customerId;
 	private String firstName;
 	private String lastName;
 	private Date dob;
 	private Date registerTime;
 	
-	public int getCustomerId() {
+	@XmlElement(name = "links")
+	List<HateosLink> hateosLinks = new ArrayList<HateosLink>();
+	
+	public Customer() {}
+	
+	public long getCustomerId() {
 		return customerId;
 	}
 	
-	public void setCustomerId(int customerId) {
+	public void setCustomerId(long customerId) {
 		this.customerId = customerId;
 	}
 	
@@ -49,6 +60,14 @@ public class Customer {
 	
 	public void setRegisterTime(Date registerTime) {
 		this.registerTime = registerTime;
+	}
+	
+	public List<HateosLink> getHateosLinks() {
+		return hateosLinks;
+	}
+	
+	public void setHateosLiks(List<HateosLink> hateosLinks) {
+		this.hateosLinks = hateosLinks;
 	}
 	
 	@Override

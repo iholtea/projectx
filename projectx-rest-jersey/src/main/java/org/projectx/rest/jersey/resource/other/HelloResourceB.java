@@ -1,4 +1,4 @@
-package org.projectx.rest.jersey.resource;
+package org.projectx.rest.jersey.resource.other;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;

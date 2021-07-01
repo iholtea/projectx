@@ -11,10 +11,17 @@ public class ConnectionProvider {
 	private static final String DB_PASS = "ionut";
 	
 	public Connection getConnection() {
+		
 		Connection conn = null;
-		try { 
+		try {
+			/*
+			 * Class.forName is needed only when running from an application server
+			 * and using directly the DriverManager.getConnection instead of using
+			 * the server managed connection pool data source
+			 */
+			Class.forName("org.postgresql.Driver");
 			conn = DriverManager.getConnection(DB_URL, DB_USER, DB_PASS);
-		} catch(SQLException ex) {
+		} catch(SQLException | ClassNotFoundException ex) {
 			ex.printStackTrace(System.err);
 		}
 		return conn;

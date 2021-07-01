@@ -6,9 +6,13 @@ import org.ionuth.data.model.Customer;
 
 public interface CustomerDao {
 	
-	public Customer getCustomerById(int id);
-	public List<Customer> getAllCustomers();
-	public void insertCustomer(Customer customer);
-	public void deleteCustomer(Customer customer);
+	Customer getCustomer(long id);
+	List<Customer> getAllCustomers();
+	List<Customer> getCustomersPaginated(int pageSize, int pageStart);
+	List<Customer> getCustomersByAge(int age, String compareType);
+	void insertCustomer(Customer customer);
+	void insertCustomer(Customer customer, boolean isReturningId);
+	void updateCustomer(Customer customer);
+	void deleteCustomer(long id);
 	
 }
