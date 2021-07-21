@@ -52,16 +52,17 @@ public class CustomerDaoJdbc extends BaseDaoJdbc implements CustomerDao {
 	public void insertCustomer(Customer customer, boolean isReturningId) {
 		try {
 			Connection conn = getConnection();
-			String strSql = "insert into customer(first_name,last_name,date_of_birth,register_time)" +
-					" values(?,?,?,?)";
+			String strSql = "insert into customer(first_name,last_name,email,date_of_birth,register_time)" +
+					" values(?,?,?,?,?)";
 			if(isReturningId) {
 				strSql += " returning customer_id";
 			}
 			PreparedStatement ps = conn.prepareStatement(strSql);
 			ps.setString(1,customer.getFirstName());
 			ps.setString(2, customer.getLastName());
-			ps.setDate(3, new java.sql.Date(customer.getDob().getTime()));
-			ps.setTimestamp(4, new Timestamp(customer.getRegisterTime().getTime()));
+			ps.setString(3, customer.getEmail());
+			ps.setDate(4, new java.sql.Date(customer.getDob().getTime()));
+			ps.setTimestamp(5, new Timestamp(customer.getRegisterTime().getTime()));
 			if(isReturningId) {
 				ResultSet rs = ps.executeQuery();
 				if(rs.next()) {
@@ -80,13 +81,14 @@ public class CustomerDaoJdbc extends BaseDaoJdbc implements CustomerDao {
 	public void updateCustomer(Customer customer) {
 		try {
 			Connection conn = getConnection();
-			String strSql = "update customer set first_name=?,last_name=?,date_of_birth=?" +
+			String strSql = "update customer set first_name=?,last_name=?,enail=?,date_of_birth=?" +
 					" where customer_id=?";
 			PreparedStatement ps = conn.prepareStatement(strSql);
 			ps.setString(1,customer.getFirstName());
 			ps.setString(2, customer.getLastName());
-			ps.setDate(3, new java.sql.Date(customer.getDob().getTime()));
-			ps.setLong(4, customer.getCustomerId());
+			ps.setString(3, customer.getEmail());
+			ps.setDate(4, new java.sql.Date(customer.getDob().getTime()));
+			ps.setLong(5, customer.getCustomerId());
 			ps.executeUpdate();
 		}	
 		catch( SQLException ex) {
@@ -178,6 +180,7 @@ public class CustomerDaoJdbc extends BaseDaoJdbc implements CustomerDao {
 		customer.setCustomerId( rs.getLong("customer_id") );
 		customer.setFirstName(rs.getString("first_name"));
 		customer.setLastName(rs.getString("last_name"));
+		customer.setEmail(rs.getString("email"));
 		customer.setDob( new Date(rs.getDate("date_of_birth").getTime()) );
 		customer.setRegisterTime( new Date(rs.getTimestamp("register_time").getTime()) );
 		return customer;

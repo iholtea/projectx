@@ -14,6 +14,7 @@ public class Customer {
 	private long customerId;
 	private String firstName;
 	private String lastName;
+	private String email;
 	private Date dob;
 	private Date registerTime;
 	
@@ -44,6 +45,14 @@ public class Customer {
 	
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
+	}
+	
+	public String getEmail() {
+		return email;
+	}
+	
+	public void setEmail(String email) {
+		this.email = email;
 	}
 	
 	public Date getDob() {
@@ -77,6 +86,7 @@ public class Customer {
 		StringBuilder sb = new StringBuilder();
 		sb.append("ID: ").append(customerId);
 		sb.append(" Name: ").append(firstName).append(" ").append(lastName);
+		sb.append(" Email: ").append(email);
 		sb.append(" DoB: ").append(df.format(dob));
 		sb.append(" Reg Time: ").append(tf.format(registerTime));
 		return sb.toString();

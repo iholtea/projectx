@@ -30,5 +30,6 @@
   <modules>
   	<module>projectx-data</module>
     <module>projectx-rest-jersey</module>
+    <module>projectx-data-gen</module>
   </modules>
 </project>

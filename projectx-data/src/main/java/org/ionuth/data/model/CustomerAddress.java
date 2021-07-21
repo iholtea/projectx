@@ -79,6 +79,21 @@ public class CustomerAddress {
 	}
 	
 	@Override
+	public boolean equals(Object obj) {
+		if (obj == this) {
+	        return true;
+		}
+	    if (!(obj instanceof CustomerAddress)) {
+	        return false;
+	    }
+	    CustomerAddress other = (CustomerAddress)obj;
+	    return this.country.equals(other.country) &&
+	    		this.city.equals(other.city) &&
+	    		this.street.equals(other.street) &&
+	    		this.number == other.number;
+	}
+	
+	@Override
 	public String toString() {
 		StringBuilder sb = new StringBuilder();
 		sb.append("Id: ").append(addressId);
