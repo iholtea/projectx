@@ -10,6 +10,6 @@ public interface CustomerAddressDao {
 	List<CustomerAddress> getAddresses(long customerId);
 	List<CustomerAddress> getAllAddresses();
 	void insertAddress(CustomerAddress address);
-	void updateCustomer(CustomerAddress address);
+	void updateAddress(CustomerAddress address);
 	void deleteAddress(long addressId);
 }

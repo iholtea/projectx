@@ -106,13 +106,13 @@ public class App01 {
 		custList.forEach(System.out::println);
 	}
 	
-	public static void insertCustomerAddresses() {
+	public static void insertCustomerAddresses(long customerId) {
 		
 		CustomerAddressDao addressDao = new CustomerAddressDaoJdbc();
 		
 		CustomerAddress address = new CustomerAddress();
 		
-		address.setCustomerId(1);
+		address.setCustomerId(customerId);
 		address.setCountry("Romania");
 		address.setCity("Bucuresti");
 		address.setStreet("Bulevardul Decebal");
@@ -121,7 +121,7 @@ public class App01 {
 		address.setAdditionalInfo("some info");
 		addressDao.insertAddress(address);
 		
-		address.setCustomerId(1);
+		address.setCustomerId(customerId);
 		address.setCountry("Romania");
 		address.setCity("Iasi");
 		address.setStreet("Stefan cel Mare");
@@ -130,7 +130,7 @@ public class App01 {
 		address.setAdditionalInfo("some info");
 		addressDao.insertAddress(address);
 		
-		address.setCustomerId(2);
+		address.setCustomerId(customerId);
 		address.setCountry("Romania");
 		address.setCity("Bucuresti");
 		address.setStreet("Bulevardul Burebista");
@@ -140,6 +140,22 @@ public class App01 {
 		addressDao.insertAddress(address);
 		
 		System.out.println("addresses inserted successfully");
+		
+	}
+	
+	public static void updateCustomerAddress(long addressId) {
+		CustomerAddressDao addressDao = new CustomerAddressDaoJdbc();
+		CustomerAddress addr = addressDao.getAddress(addressId);
+		System.out.println("old: " + addr);
+		addr.setCountry( "Chile");
+		addr.setCity("Santiago");
+		addr.setStreet("Evita Peron");
+		addr.setNumber((short)987);
+		addr.setZipCode("998877");
+		addr.setAdditionalInfo("otherInfo");
+		addressDao.updateAddress(addr);
+		addr = addressDao.getAddress(addressId);
+		System.out.println("new: " + addr);
 		
 	}
 	
@@ -164,9 +180,10 @@ public class App01 {
 		//selectCustomersPaginated(3, 3);
 		//selectCustomersByAge(30, "gt");
 		
-		//insertCustomerAddresses();
+		//insertCustomerAddresses(154L);
 		//selectAllAddresses();
-		selectAddressesByCustomer(2L);
+		//selectAddressesByCustomer(2L);
+		updateCustomerAddress(214L);
 	}
 	
 }

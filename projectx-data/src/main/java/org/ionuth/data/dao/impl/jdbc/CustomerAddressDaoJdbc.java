@@ -8,18 +8,39 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.ionuth.data.DataNotFoundException;
 import org.ionuth.data.dao.BaseDaoJdbc;
 import org.ionuth.data.dao.CustomerAddressDao;
+import org.ionuth.data.model.Customer;
 import org.ionuth.data.model.CustomerAddress;
 
 public class CustomerAddressDaoJdbc extends BaseDaoJdbc implements CustomerAddressDao {
 
 	@Override
 	public CustomerAddress getAddress(long addressId) {
-		// TODO Auto-generated method stub
-		return null;
+		CustomerAddress addr = null;
+		try {
+			Connection conn = getConnection();
+			String strSql = "select * from customer_address where address_id=?";
+			PreparedStatement ps = conn.prepareStatement(strSql);
+			ps.setLong(1, addressId);
+			ResultSet rs = ps.executeQuery();
+			if(rs.next()) {
+				addr = mapRs2Address(rs);
+				rs.close();
+				conn.close();
+			}
+			else {
+				throw new DataNotFoundException("CustomerAdddress not found id: " + addressId);
+			}
+		}	
+		catch( SQLException ex) {
+			ex.printStackTrace(System.err);
+		}
+		
+		return addr;
 	}
-
+	
 	@Override
 	public List<CustomerAddress> getAddresses(long customerId) {
 		List<CustomerAddress> addrList = new ArrayList<CustomerAddress>();
@@ -58,7 +79,8 @@ public class CustomerAddressDaoJdbc extends BaseDaoJdbc implements CustomerAddre
 		
 		return addrList;
 	}
-
+	
+	
 	@Override
 	public void insertAddress(CustomerAddress address) {
 		try {
@@ -78,19 +100,42 @@ public class CustomerAddressDaoJdbc extends BaseDaoJdbc implements CustomerAddre
 		} catch(SQLException ex) {	
 			ex.printStackTrace(System.err);	
 		}
-		
 	}
 
 	@Override
-	public void updateCustomer(CustomerAddress address) {
-		// TODO Auto-generated method stub
+	public void updateAddress(CustomerAddress address) {
+		try {
+			Connection conn = getConnection();
+			String strSql = "update customer_address set " + 
+					"country=?,city=?,street=?,address_no=?,zip_code=?,additional_info=? " +
+					"where address_id=?";
+			PreparedStatement ps = conn.prepareStatement(strSql);
+			ps.setString(1, address.getCountry());
+			ps.setString(2, address.getCity());
+			ps.setString(3, address.getStreet());
+			ps.setShort(4, address.getNumber());
+			ps.setString(5, address.getZipCode());
+			ps.setString(6, address.getAdditionalInfo());
+			ps.setLong(7, address.getAddressId());
+			ps.executeUpdate();
+		} catch(SQLException ex) {	
+			ex.printStackTrace(System.err);	
+		}
 		
 	}
 
 	@Override
 	public void deleteAddress(long addressId) {
-		// TODO Auto-generated method stub
-		
+		try {
+			Connection conn = getConnection();
+			String strSql = "delete from customer_address where address_id=?";
+			PreparedStatement ps = conn.prepareStatement(strSql);
+			ps.setLong(1, addressId);
+			ps.executeUpdate();
+		}	
+		catch( SQLException ex) {
+			ex.printStackTrace(System.err);
+		}
 	}
 	
 	private CustomerAddress mapRs2Address(ResultSet rs) throws SQLException {

@@ -7,6 +7,7 @@ import javax.ws.rs.ApplicationPath;
 import javax.ws.rs.core.Application;
 
 import org.projectx.rest.jersey.config.exception.DataNotFoundExceptionMapper;
+import org.projectx.rest.jersey.config.filters.CorsResponseFilter;
 import org.projectx.rest.jersey.resource.CustomerAddressResource;
 import org.projectx.rest.jersey.resource.CustomerResource;
 import org.projectx.rest.jersey.resource.other.DemoResource;
@@ -27,6 +28,7 @@ public class ApplicationJersey extends Application {
 	public Set<Object> getSingletons() {
 	    Set<Object> set = new HashSet<>();
 	    set.add(new DataNotFoundExceptionMapper());
+	    set.add(new CorsResponseFilter());
 	    return set;
 	}
 	

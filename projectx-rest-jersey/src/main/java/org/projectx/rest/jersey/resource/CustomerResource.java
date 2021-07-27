@@ -1,6 +1,7 @@
 package org.projectx.rest.jersey.resource;
 
 import java.net.URI;
+import java.util.Date;
 import java.util.List;
 
 import javax.ws.rs.BeanParam;
@@ -102,6 +103,7 @@ public class CustomerResource {
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response addCustomer(Customer customer, @Context UriInfo uriInfo) {
 		CustomerDao custDao = new CustomerDaoJdbc();
+		customer.setRegisterTime(new Date());
 		custDao.insertCustomer(customer,true);
 		URI newUri = uriInfo.getAbsolutePathBuilder()
 				.path( String.valueOf(customer.getCustomerId()) )

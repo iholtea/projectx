@@ -81,7 +81,7 @@ public class CustomerDaoJdbc extends BaseDaoJdbc implements CustomerDao {
 	public void updateCustomer(Customer customer) {
 		try {
 			Connection conn = getConnection();
-			String strSql = "update customer set first_name=?,last_name=?,enail=?,date_of_birth=?" +
+			String strSql = "update customer set first_name=?,last_name=?,email=?,date_of_birth=?" +
 					" where customer_id=?";
 			PreparedStatement ps = conn.prepareStatement(strSql);
 			ps.setString(1,customer.getFirstName());
@@ -102,7 +102,7 @@ public class CustomerDaoJdbc extends BaseDaoJdbc implements CustomerDao {
 		try {
 			Connection conn = getConnection();
 			Statement stmt = conn.createStatement();
-			String strSql = "select * from customer order by customer_id";
+			String strSql = "select * from customer order by customer_id desc";
 			ResultSet rs = stmt.executeQuery(strSql);
 			while(rs.next()) {
 				Customer customer = mapRs2Customer(rs);
