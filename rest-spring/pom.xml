@@ -8,7 +8,7 @@
     <groupId>org.springframework.boot</groupId>
   	<artifactId>spring-boot-starter-parent</artifactId>
   	<version>2.5.3</version>
-  	<relativePath/> <!-- lookup parent from repository -->
+  	<relativePath/>
   </parent>
 
   <groupId>ionuth</groupId>
@@ -57,12 +57,21 @@
     -->
     
     <!-- Start Swagger section -->
+    <!-- 
     <dependency>
         <groupId>io.springfox</groupId>
         <artifactId>springfox-boot-starter</artifactId>
         <version>3.0.0</version>
     </dependency>
+     -->
     <!-- End Swagger section -->
+    
+    <dependency>
+      <groupId>org.apache.commons</groupId>
+      <artifactId>commons-lang3</artifactId>
+      <version>3.9</version>
+    </dependency>
+    
     
     <!-- Test -->    
     <dependency>

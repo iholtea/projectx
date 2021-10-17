@@ -103,5 +103,12 @@ public class Customer {
 	public void setAddresses(List<CustomerAddress> addresses) {
 		this.addresses = addresses;
 	}
+
+	@Override
+	public String toString() {
+		return "Customer [firstName=" + firstName + ", lastName=" + lastName + ", email=" + email + ", dob=" + dob
+				+ ", registerTime=" + registerTime + "]";
+	}
+	
 	
 }

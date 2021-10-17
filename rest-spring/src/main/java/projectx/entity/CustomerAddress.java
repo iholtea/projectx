@@ -124,5 +124,13 @@ public class CustomerAddress {
 	    		this.street.equals(other.street) &&
 	    		this.number == other.number;
 	}
+	
+	@Override
+	public String toString() {
+		StringBuilder sb = new StringBuilder();
+		sb.append( "Addr: ").append(country).append(" ").append(city).append(" ");
+		sb.append(street).append(" no: ").append(number);
+		return sb.toString();
+	}
 
 }
