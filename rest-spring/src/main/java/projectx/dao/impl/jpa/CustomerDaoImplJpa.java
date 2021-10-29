@@ -20,7 +20,7 @@ public class CustomerDaoImplJpa implements CustomerDao {
 	
 	@Override
 	public List<Customer> findAll() {
-		String strJpa = "SELECT c from Customer c";
+		String strJpa = "SELECT c from Customer c ORDER BY c.registerTime DESC";
 		List<Customer> customers = em.createQuery(strJpa).getResultList();
 		return customers;
 	}

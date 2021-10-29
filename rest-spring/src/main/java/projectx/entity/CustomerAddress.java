@@ -19,7 +19,7 @@ public class CustomerAddress {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "address_id")
-	private Long addressId;
+	private Long id;
 	
 	@Column(name = "contry", length = 50, nullable = false)
 	private String country;
@@ -46,12 +46,12 @@ public class CustomerAddress {
 	
 	public CustomerAddress() {}
 	
-	public Long getAddressId() {
-		return addressId;
+	public Long getId() {
+		return id;
 	}
 	
-	public void setAddressId(Long addressId) {
-		this.addressId = addressId;
+	public void setId(Long id) {
+		this.id = id;
 	}
 	
 	public String getCountry() {
