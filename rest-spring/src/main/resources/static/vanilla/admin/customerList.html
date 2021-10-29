@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- google fonts -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <!-- materialize.css -->    
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+  <title>ProjectX Customers</title>
+</head>
+<body>
+  
+  <nav class="nav-wrapper indigo">
+    <div class="container">
+      <div class="row">
+        <div class="col m2">
+          <a href="#" class="brand-logo left">MyLogo</a>
+        </div>
+        <div class="col m10">
+          <ul> 
+            <li><a href="index.html">Home</a></li>
+            <li><a href="customerList.html">Customers</a></li>
+            <li><a href="book.html">Books</a></li>
+          </ul>    
+        </div>
+      </div>
+    </div>
+  </nav>
+  
+  <br>
+  <div class="container">
+    <div class="row">
+      
+      <div class="col m9" id="customer-container">
+        
+        <h5>Customers</h5>
+
+        <table class="highlight">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Age</th>
+              <th>Joined Date</th>
+              <th>&nbsp;</th>
+            </tr>
+          </thead>
+
+          <tbody id="customer-table-body">
+          </tbody>
+
+        </table>
+
+        <ul class="pagination">
+          <li class="disabled">
+            <a href="#!"><i class="material-icons">chevron_left</i></a>
+          </li>
+          <li class="active"><a href="#!">1</a></li>
+          <li class="waves-effect"><a href="#!">2</a></li>
+          <li class="waves-effect"><a href="#!">3</a></li>
+          <li class="disabled"><a href="#!">...</a></li>
+          <li class="waves-effect"><a href="#!">25</a></li>
+          <li class="waves-effect"><a href="#!">
+            <i class="material-icons">chevron_right</i></a>
+          </li>
+        </ul>
+        
+        <br>
+        <a href="customerAdd.html" class="waves-effect waves-light btn-large">
+          <i class="material-icons right">add</i>New Customer
+        </a>
+
+      </div>
+      
+      <div class="col m3">
+        <div class="card">
+          <div class="card-content">
+            <span class="card-title">First News</span>
+            <p>Lorem Ipsum is simply dummy text of the printing and typesetting 
+              industry. Lorem Ipsum has been the industry's standard dummy 
+              text ever since the 1500s.
+            </p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-content">
+            <span class="card-title">Other News</span>
+            <p>Lorem Ipsum is simply dummy text of the printing and typesetting 
+              industry. Lorem Ipsum has been the industry's standard dummy 
+              text ever since the 1500s.
+            </p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <br><br><br>
+  
+  <footer class="page-footer grey darken-2">
+    <div class="container">
+      <div class="row">
+        <div class="col m6">
+          <h5>About</h5>    
+          <p>
+            Some text about this project and more text about this project<br>
+            Some text about this project and more text about this project  
+          </p>
+        </div>
+        <div class="col m4 offset-m2">
+          <h5>Links</h5>
+          <ul>
+            <li><a href="#" class="grey-text text-lighten-3">Link 1</a></li>
+            <li><a href="#" class="grey-text text-lighten-3">Link 2</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-copyright grey darken-3">
+      <div class="container center-align">
+        &copy; 2021 ionuth
+      </div>
+    </div>
+  </footer>
+
+  <!--meterialize.js-->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <script src="../js/util.js"></script>
+  <script src="../js/customerUI.js"></script>
+  <script src="../js/customerXhr.js"></script>
+  <script src="../js/customerList.js"></script>
+
+</body>
+</html>
