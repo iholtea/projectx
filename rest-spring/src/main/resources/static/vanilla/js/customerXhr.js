@@ -1,6 +1,6 @@
 class CustomerXhr {
   
-  baseUrl = 'http://localhost:8080/api/customers';
+  baseUrl = 'http://localhost:8080/api/customers/';
 
   //TODO  add telephone number to customer
   getCustomers(callback) {
